@@ -1,0 +1,32 @@
+{
+    "name": "@seracio/tooltip",
+    "description": "A React hook to make tooltips",
+    "version": "0.1.0",
+    "main": "dist/index.js",
+    "source": "src/index.tsx",
+    "scripts": {
+        "start": "npx styleguidist server",
+        "doc": "npx styleguidist build",
+        "prepublishOnly": "npm run build",
+        "build": "microbundle"
+    },
+    "repository": "git@github.com:seracio/tooltip.git",
+    "author": "nicolas mondon <nicolasmondon@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/react": "^16.7.20",
+        "@types/react-dom": "^16.0.11",
+        "d3-selection": "^1.4.0",
+        "microbundle": "^0.9.0",
+        "react": "^16.7.0",
+        "react-dom": "^16.7.0",
+        "react-styleguidist": "^8.0.6",
+        "ts-loader": "^5.3.3",
+        "typescript": "^3.2.2",
+        "webpack": "^4.28.4"
+    },
+    "peerDependencies": {
+        "react": ">= 16.7.0",
+        "d3-selection": ">= 1.0.0"
+    }
+}
