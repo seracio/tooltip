@@ -8,7 +8,7 @@
         "start": "npx styleguidist server",
         "doc": "npx styleguidist build",
         "prepublishOnly": "npm run build",
-        "build": "microbundle"
+        "build": "rm -rf .rts2* && rm -rf dist && microbundle -f cjs --sourcemap false"
     },
     "repository": "git@github.com:seracio/tooltip.git",
     "author": "nicolas mondon <nicolasmondon@gmail.com>",
