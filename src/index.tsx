@@ -39,7 +39,6 @@ function useTooltip({ refresh = [], style = {}, dx = 0, dy = 0 } = {}) {
                 const [x, y] = d3.mouse(rootEl);
                 tooltip
                     .html(label)
-
                     .style(
                         x < w / 2 ? 'left' : 'right',
                         x < w / 2 ? `${x + dx}px` : `${w - x + dx}px`
@@ -55,7 +54,7 @@ function useTooltip({ refresh = [], style = {}, dx = 0, dy = 0 } = {}) {
             .on('mouseleave', null)
             .on('mouseleave', function() {
                 timeout = setTimeout(() => {
-                    tooltip.text('').style('opacity', 0);
+                    tooltip.html('').style('opacity', 0);
                 }, 150);
             });
     }, refresh);
