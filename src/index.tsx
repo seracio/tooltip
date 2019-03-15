@@ -57,6 +57,14 @@ function useTooltip({ refresh = [], style = {}, dx = 0, dy = 0 } = {}) {
                     tooltip.html('').style('opacity', 0);
                 }, 150);
             });
+        //  unmount
+        return () => {
+            clearTimeout(timeout);
+            container
+                .selectAll('[data-tooltip]')
+                .on('mouseenter', null)
+                .on('mouseleave', null);
+        };
     }, refresh);
     return [Tooltip, root];
 }
