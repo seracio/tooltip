@@ -19,7 +19,7 @@ const Tooltip = ({ style }) => (
     />
 );
 
-function useTooltip({ refresh = [], style = {}, dx = 0, dy = 0 } = {}) {
+function useTooltip({ style = {}, dx = 0, dy = 0 } = {}, refresh = []) {
     const root = useRef(null);
     useEffect(() => {
         // @ts-ignore
