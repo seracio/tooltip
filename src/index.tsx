@@ -19,7 +19,10 @@ const Tooltip = ({ style }) => (
     />
 );
 
-function useTooltip({ dx = 0, dy = 0 } = {}, refresh = []) {
+function useTooltip(
+    { dx = 0, dy = 0, enterCb = () => {}, leaveCb = () => {} } = {},
+    refresh = []
+) {
     const root = useRef(null);
     useEffect(() => {
         // @ts-ignore
@@ -31,8 +34,11 @@ function useTooltip({ dx = 0, dy = 0 } = {}, refresh = []) {
         let timeout: any = null;
         container
             .selectAll('[data-tooltip]')
-            .on('mouseenter', null)
             .on('mouseenter', function() {
+                // @ts-ignore
+                enterCb(this);
+            })
+            .on('mousemove', function() {
                 !!timeout && clearTimeout(timeout);
                 // @ts-ignore
                 const label = this.getAttribute('data-tooltip');
@@ -53,6 +59,8 @@ function useTooltip({ dx = 0, dy = 0 } = {}, refresh = []) {
             })
             .on('mouseleave', null)
             .on('mouseleave', function() {
+                // @ts-ignore
+                leaveCb(this);
                 timeout = setTimeout(() => {
                     tooltip.html('').style('opacity', 0);
                 }, 150);
@@ -63,6 +71,7 @@ function useTooltip({ dx = 0, dy = 0 } = {}, refresh = []) {
             container
                 .selectAll('[data-tooltip]')
                 .on('mouseenter', null)
+                .on('mousemove', null)
                 .on('mouseleave', null);
         };
     }, refresh);
