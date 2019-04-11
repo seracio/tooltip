@@ -7,7 +7,7 @@
 @seracio/tooltip has 2 peer dependencies that need to be installed first
 
 ```bash
-npm i React d3-selection
+npm i react react-dom d3-selection
 npm i @seracio/tooltip
 ```
 
@@ -21,8 +21,14 @@ You need to be aware of several things:
 -   In this attribute, you can specify html or simple text (no jsx though)
 
 ```js
+const React, { useState } = require('react');
+
 const MyComponent = () => {
-    const [Tooltip, root] = useTooltip();
+    const [targetIndex, set] = useState(-1);
+    const [Tooltip, root] = useTooltip({
+        enterCb: el => set(+el.getAttribute('data-tooltip-index')),
+        leaveCb: el => set(-1)
+    });
 
     const size = 500;
     const data = [
@@ -30,15 +36,13 @@ const MyComponent = () => {
             x: 0,
             y: 0,
             width: 100,
-            height: 100,
-            fill: 'red'
+            height: 100
         },
         {
             x: 300,
             y: 200,
             width: 50,
-            height: 80,
-            fill: 'red'
+            height: 80
         }
     ];
 
@@ -63,7 +67,9 @@ const MyComponent = () => {
                             style={{ cursor: 'pointer' }}
                             key={i}
                             data-tooltip={`rect number ${i + 1}`}
+                            data-tooltip-index={i}
                             {...d}
+                            fill={targetIndex === i ? 'red' : 'blue'}
                         />
                     );
                 })}
@@ -72,7 +78,7 @@ const MyComponent = () => {
     );
 };
 
-render(<MyComponent />, document.querySelector('#root'));
+<MyComponent />;
 ```
 
 ## API
