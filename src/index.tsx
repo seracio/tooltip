@@ -31,7 +31,7 @@ function useTooltip(
         const h = rootEl.clientHeight;
         const container = d3.select(rootEl);
         const tooltip = container.select('.layout-tooltip');
-        let timeout: any = null;
+        //let timeout: any = null;
         container
             .selectAll('[data-tooltip]')
             .on('mouseenter', function() {
@@ -39,7 +39,7 @@ function useTooltip(
                 enterCb(this);
             })
             .on('mousemove', function() {
-                !!timeout && clearTimeout(timeout);
+                //!!timeout && clearTimeout(timeout);
                 // @ts-ignore
                 const label = this.getAttribute('data-tooltip');
                 const [x, y] = d3.mouse(rootEl);
@@ -57,17 +57,17 @@ function useTooltip(
                     .style(y < h / 2 ? 'bottom' : 'top', '')
                     .style('opacity', 1);
             })
-            .on('mouseleave', null)
             .on('mouseleave', function() {
                 // @ts-ignore
                 leaveCb(this);
-                timeout = setTimeout(() => {
+                tooltip.style('opacity', 0);
+                /*timeout = setTimeout(() => {
                     tooltip.style('opacity', 0);
-                }, 150);
+                }, 150);*/
             });
         //  unmount
         return () => {
-            clearTimeout(timeout);
+            //clearTimeout(timeout);
             container
                 .selectAll('[data-tooltip]')
                 .on('mouseenter', null)
