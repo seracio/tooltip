@@ -62,7 +62,7 @@ function useTooltip(
                 // @ts-ignore
                 leaveCb(this);
                 timeout = setTimeout(() => {
-                    tooltip.html('').style('opacity', 0);
+                    tooltip.style('opacity', 0);
                 }, 150);
             });
         //  unmount
