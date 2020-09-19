@@ -7,7 +7,7 @@
 @seracio/tooltip has 2 peer dependencies that need to be installed first
 
 ```bash
-npm i react react-dom d3-selection
+npm i react react-dom d3
 npm i @seracio/tooltip
 ```
 
@@ -15,10 +15,10 @@ npm i @seracio/tooltip
 
 You need to be aware of several things:
 
--   The hook returns 2 things: the component Tooltip itself and a ref to the container
--   The container that will get the ref needs to be in relative position or it won't work
--   The hook will make tooltips on each element with a `data-tooltip` attribute
--   In this attribute, you can specify html or simple text (no jsx though)
+- The hook returns 2 things: the component Tooltip itself and a ref to the container
+- The container that will get the ref needs to be in relative position or it won't work
+- The hook will make tooltips on each element with a `data-tooltip` attribute
+- In this attribute, you can specify html or simple text (no jsx though)
 
 ```js
 const React, { useState } = require('react');
