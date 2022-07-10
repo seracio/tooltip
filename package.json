@@ -1,13 +1,32 @@
 {
-  "name": "tooltip-2",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@seracio/tooltip",
+  "description": "A React hook to make tooltips",
+  "files": [
+    "dist"
+  ],
+  "version": "3.0.0",
+  "type": "module",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "require": "./dist/magnifier.cjs",
+    "default": "./dist/magnifier.modern.js"
+  },
+  "source": "src/index.tsx",
+  "main": "dist/tooltip.cjs",
+  "module": "dist/tooltip.module.js",
+  "unpkg": "dist/tooltip.umd.js",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "prepublishOnly": "yarn build",
+    "build": "rm -rf dist && microbundle --jsx=React.createElement --sourcemap=false"
   },
-  "dependencies": {},
+  "repository": "git@github.com:seracio/tooltip.git",
+  "author": "nicolas mondon <nicolasmondon@gmail.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "d3-selection": ">=3.0.0",
+    "react": ">= 16.7.0"
+  },
   "devDependencies": {
     "@types/d3": "^7.4.0",
     "@types/react": "^18.0.0",
