@@ -8,8 +8,8 @@
   "type": "module",
   "types": "dist/index.d.ts",
   "exports": {
-    "require": "./dist/magnifier.cjs",
-    "default": "./dist/magnifier.modern.js"
+    "require": "./dist/tooltip.cjs",
+    "default": "./dist/tooltip.modern.js"
   },
   "source": "src/index.tsx",
   "main": "dist/tooltip.cjs",
