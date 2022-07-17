@@ -26,7 +26,7 @@ const useTooltip = (
     enterCb = (el: any) => {},
     leaveCb = (el: any) => {},
   } = {},
-  refresh = []
+  refresh: any[] = []
 ): [typeof Tooltip, any] => {
   const root = useRef(null);
   useEffect(() => {
